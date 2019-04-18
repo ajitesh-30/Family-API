@@ -33,7 +33,7 @@ exports.findone = (req,res)=>{
 	var emailAddr = req.param('emailAddr');
 	var password = req.param('password');
 	var targetPerson = req.param('targetPerson');
-	family.find({
+	Family.find({
 		'emailAddr':emailAddr,
 		'password':password,
 		'position':targetPerson
@@ -45,7 +45,7 @@ exports.findone = (req,res)=>{
 			});
 		}
 		res.send(family);
-	}).cathc(err=>{
+	}).catch(err=>{
 		if(err.kind === 'ObjectId'){
 			return res.status(404).send({
 				message : "No such member in the family"
@@ -56,3 +56,4 @@ exports.findone = (req,res)=>{
 		});
 	});
 };
+//localhost:3000/getinfo/?emailAddr=ajiteshs10@gmail.com&password=aji123&targetPerson=Ajitesh
