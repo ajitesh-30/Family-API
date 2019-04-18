@@ -1,6 +1,5 @@
-const family = require('../models/family.model.js');
-
-exports.findAll =(req,res)=>{
+const Family = require('../models/family.model.js');
+exports.findAll = (req,res)=>{
 	Family.find()
 	.then(family=>{
 		res.send(family);
@@ -11,12 +10,6 @@ exports.findAll =(req,res)=>{
 	});
 };
 exports.register = (req,res)=>{
-	if(!req.body.content){
-		return res.status(400).send({
-			message:"Enter proper family details"
-		});
-	}
-
 	const family_data = new Family({
 		emailAddr :req.body.emailAddr,
 		password : req.body.password,
